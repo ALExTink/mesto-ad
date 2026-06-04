@@ -1,18 +1,18 @@
-function showInputError(formElement, inputElement, errorMessage, settings) { //Показывает ошибку под полем, на котором она сделана
+function showInputError(formElement, inputElement, errorMessage, settings) { 
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(settings.inputErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(settings.errorClass);
 }
 
-function hideInputError(formElement, inputElement, settings) { //Скрывает ошибку под полем, на котором она сделана
+function hideInputError(formElement, inputElement, settings) { 
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.remove(settings.inputErrorClass);
   errorElement.textContent = "";
   errorElement.classList.remove(settings.errorClass);
 }
 
-function setEventListeners(formElement, settings) { //Навешивает обработчики input на все поля формы
+function setEventListeners(formElement, settings) { 
   const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
   const buttonElement = formElement.querySelector(settings.submitButtonSelector);
   toggleButtonState(inputList, buttonElement, settings);
@@ -24,7 +24,7 @@ function setEventListeners(formElement, settings) { //Навешивает об�
   });
 }
 
-function checkInputValidity(formElement, inputElement, settings) { //Проверка валидности поля. В случае невалидности показывает ошибку, в случае валидности скрывает ошибку
+function checkInputValidity(formElement, inputElement, settings) { 
   if (inputElement.validity.patternMismatch) {
     inputElement.setCustomValidity(inputElement.dataset.errorMessage);
   } else {
@@ -38,31 +38,30 @@ function checkInputValidity(formElement, inputElement, settings) { //Прове�
   }
 }
 
-function hasInvalidInput(inputList) { //Проверяет, есть ли валидность хотя бы одного поля в форме. Если есть хотя бы одно невалидное поле, возвращает true, если все поля валидные - false
+function hasInvalidInput(inputList) { 
   return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
   });
 }
 
-function toggleButtonState(inputList, buttonElement, settings) { //Переключение состояний кнопки в зависимости от валидности полей. Если есть хотя бы одно невалидное поле, кнопка становится неактивной, если все поля валидные - активной
-  if (hasInvalidInput(inputList)) {
+function toggleButtonState(inputList, buttonElement, settings) { 
     disableSubmitButton(buttonElement, settings);
   } else {
     enableSubmitButton(buttonElement, settings);
   }
 }
 
-function enableSubmitButton(buttonElement, settings) { //Делает кнопку активной
+function enableSubmitButton(buttonElement, settings) { 
   buttonElement.classList.remove(settings.inactiveButtonClass);
   buttonElement.disabled = false;
 }
 
-function disableSubmitButton(buttonElement, settings) { //Делает кнопку неактивной
+function disableSubmitButton(buttonElement, settings) {
   buttonElement.classList.add(settings.inactiveButtonClass);
   buttonElement.disabled = true;
 }
 
-function enableValidation(settings) { //Включение валидации для всех форм на странице. Находит все формы по селектору, указанному в настройках, и навешивает обработчики событий на каждую форму
+function enableValidation(settings) { 
   const formList = Array.from(document.querySelectorAll(settings.formSelector));
 
   formList.forEach((formElement) => {
@@ -70,7 +69,7 @@ function enableValidation(settings) { //Включение валидации д
   });
 }
 
-function clearValidation(formElement, settings) { //Очистка валидации для формы
+function clearValidation(formElement, settings) { 
   const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
   const buttonElement = formElement.querySelector(settings.submitButtonSelector);
 
