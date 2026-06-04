@@ -1,19 +1,19 @@
-export const likeCard = (likeButton) => { //Кнопка лайка
+export const likeCard = (likeButton) => { 
   likeButton.classList.toggle("card__like-button_is-active");
 };
 
-export const deleteCard = (cardElement) => { //Удаление карточки
+export const deleteCard = (cardElement) => { 
   cardElement.remove();
 };
 
-const getTemplate = () => { //Клонирование HTML-шаблона
+const getTemplate = () => { 
   return document
     .getElementById("card-template")
     .content.querySelector(".card")
     .cloneNode(true);
 };
 
-export const createCard = ( //Создание карточки на основе данных от пользователя и добавление обработчиков событий
+export const createCard = ( 
   data, { onPreviewPicture, onLikeIcon, onDeleteCard }) => {
     const cardElement = getTemplate();
     const likeButton = cardElement.querySelector(".card__like-button");
