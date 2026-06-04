@@ -7,7 +7,7 @@ const config = { // Получение данных для работы с се�
   },
 };
 
-const checkResponse = (res) => { //Првоерка ответа от сервера
+const checkResponse = (res) => { //Проверка ответа от сервера
   if (res.ok) {
     return res.json();
   }
