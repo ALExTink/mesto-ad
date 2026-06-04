@@ -1,8 +1,8 @@
 
 const config = { 
-  baseUrl: "ВСТАВЬ_АДРЕС_СЕРВЕРА",
+  baseUrl: "https:/my_mesto_ad",
   headers: {
-    authorization: "ВСТАВЬ_ТОКЕН",
+    authorization: "my_token",
     "Content-Type": "application/json",
   },
 };
