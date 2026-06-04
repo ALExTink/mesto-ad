@@ -45,6 +45,7 @@ function hasInvalidInput(inputList) {
 }
 
 function toggleButtonState(inputList, buttonElement, settings) { 
+  if (hasInvalidInput(inputList)) {
     disableSubmitButton(buttonElement, settings);
   } else {
     enableSubmitButton(buttonElement, settings);
