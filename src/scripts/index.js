@@ -38,7 +38,7 @@ const avatarFormModalWindow = document.querySelector(".popup_type_edit-avatar");
 const avatarForm = avatarFormModalWindow.querySelector(".popup__form");
 const avatarInput = avatarForm.querySelector(".popup__input");
 
-const validationSettings = { // Настройки для валидации форм
+const validationSettings = { 
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__button",
@@ -47,28 +47,28 @@ const validationSettings = { // Настройки для валидации ф�
   errorClass: "popup__error_visible",
 };
 
-const handlePreviewPicture = ({ name, link }) => { // Открытие модального окна с картинкой
+const handlePreviewPicture = ({ name, link }) => { //
   imageElement.src = link;
   imageElement.alt = name;
   imageCaption.textContent = name;
   openModalWindow(imageModalWindow);
 };
 
-const handleProfileFormSubmit = (evt) => { // Обработчик формы редактирования профиля
+const handleProfileFormSubmit = (evt) => { 
   evt.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
   closeModalWindow(profileFormModalWindow);
 };
 
-const handleAvatarFormSubmit = (evt) => { // Обработчик формы редактирования аватара
+const handleAvatarFormSubmit = (evt) => { 
   evt.preventDefault();
   profileAvatar.style.backgroundImage = `url(${avatarInput.value})`;
   avatarForm.reset();
   closeModalWindow(avatarFormModalWindow);
 };
 
-const handleCardFormSubmit = (evt) => { // Обработчик формы добавления карточки
+const handleCardFormSubmit = (evt) => { 
   evt.preventDefault();
   placesWrap.prepend(
     createCard(
@@ -87,7 +87,7 @@ const handleCardFormSubmit = (evt) => { // Обработчик формы до�
   closeModalWindow(cardFormModalWindow);
 };
 
-profileForm.addEventListener("submit", handleProfileFormSubmit); // Добавление обработчика отправки формы редактирования профиля
+profileForm.addEventListener("submit", handleProfileFormSubmit);
 cardForm.addEventListener("submit", handleCardFormSubmit);
 avatarForm.addEventListener("submit", handleAvatarFormSubmit);
 enableValidation(validationSettings);
@@ -110,7 +110,7 @@ openCardFormButton.addEventListener("click", () => {
   openModalWindow(cardFormModalWindow);
 });
 
-initialCards.forEach((data) => { // Отображение начальных карточек
+initialCards.forEach((data) => { 
   placesWrap.append(
     createCard(data, {
       onPreviewPicture: handlePreviewPicture,
@@ -120,7 +120,7 @@ initialCards.forEach((data) => { // Отображение начальных к
   );
 });
 
-const allPopups = document.querySelectorAll(".popup"); // Настройка обработчиков событий для всех попапов
+const allPopups = document.querySelectorAll(".popup"); 
 allPopups.forEach((popup) => {
   setCloseModalWindowEventListeners(popup);
 });
