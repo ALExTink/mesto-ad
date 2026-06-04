@@ -1,5 +1,5 @@
-//Работа с сервером
-const config = { // Получение данных для работы с сервером
+
+const config = { 
   baseUrl: "ВСТАВЬ_АДРЕС_СЕРВЕРА",
   headers: {
     authorization: "ВСТАВЬ_ТОКЕН",
@@ -7,20 +7,20 @@ const config = { // Получение данных для работы с се�
   },
 };
 
-const checkResponse = (res) => { //Проверка ответа от сервера
+const checkResponse = (res) => { 
   if (res.ok) {
     return res.json();
   }
   return Promise.reject(`Ошибка: ${res.status}`);
 };
 
-const getUserInfo = () => { // Получение данных пользователя с сервера
+const getUserInfo = () => { 
   return fetch(`${config.baseUrl}/users/me`, {
     headers: config.headers,
   }).then(checkResponse);
 };
 
-const getInitialCards = () => { // Список карточек с сервера
+const getInitialCards = () => { 
   return fetch(`${config.baseUrl}/cards`, {
     headers: config.headers,
   }).then(checkResponse);
